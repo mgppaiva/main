@@ -24,7 +24,7 @@ def get_ultima_data_disponivel_base(path_file_base):
 
 
 def do_login(driver, user_login, pass_login):
-    driver.get('https://tesourodireto.bmfbovespa.com.br/portalinvestidor/')
+    driver.get('https://portalinvestidor.tesourodireto.com.br/')
     driver.find_element_by_id('BodyContent_txtLogin').send_keys("", user_login)
     driver.find_element_by_id('BodyContent_txtSenha').send_keys("", user_pass)
     driver.find_element_by_id('BodyContent_btnLogar').click()
@@ -47,15 +47,15 @@ opts.add_argument("--headless")
 driver = webdriver.Firefox(firefox_options=opts, executable_path=r'drivers/geckodriver')
 
 # Parâmetros
-user_login = os.environ.get("LOGIN_USUARIO")
-user_pass = os.environ.get("SENHA_USUARIO")
+user_login = "97440248791"
+user_pass = "Luiz@2013"
 
 # Login
 driver = do_login(driver, user_login, user_pass)
 
 # Seleciona a página de extrato
-driver.get("https://tesourodireto.bmfbovespa.com.br/portalinvestidor/extrato.aspx")
-driver.find_element_by_id("BodyContent_btnConsultar").click()
+driver.get("https://portalinvestidor.tesourodireto.com.br/Extrato")
+# MGP driver.find_element_by_id("BodyContent_btnConsultar").click()
 
 initialYear = int(os.environ.get("ANO_INICIAL"))
 currentYear = int(datetime.datetime.now().year)
